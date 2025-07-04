@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Estudiantes</title>
+    <link rel="stylesheet" href="styles_modern.css">
+  </head>
+  <body>
+    <input type="text" id="nameInput" placeholder="Tu Nombre">
+    <button onclick="saludar()">Saludarme</button>
+    <p id="saludo"></p>
+
+    <script>
+      function saludar() {
+        const name = document.getElementById('nameInput').value;
+        fetch(`/greet?name=${name}`)
+          .then(response => response.json())
+          .then(data => {
+            document.getElementById('saludo').textContent = data.message;
+          });
+      }
+    </script>
+
+    <div>
+      <h2>Agregar Estudiante</h2>
+      <input type="text" id="studentInput" placeholder="Nombre del estudiante">
+      <button id="addButton">Agregar Estudiante</button>
+    </div>
+
+    <h1>Lista de Estudiantes</h1>
+    <button id="loadButton">Cargar Estudiantes</button>
+    <table id="studentsTable">
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Nombre</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+    <script src="script.js"></script>
+  </body>
+</html>
