@@ -12,13 +12,23 @@
 
     <script>
       function saludar() {
-        const name = document.getElementById('nameInput').value;
-        fetch(`/greet?name=${name}`)
-          .then(response => response.json())
-          .then(data => {
-            document.getElementById('saludo').textContent = data.message;
-          });
+      const name = document.getElementById('nameInput').value.trim();
+      const saludoP = document.getElementById('saludo');
+      
+      if (name === '') {
+        saludoP.textContent = '¡Por favor escribe tu nombre! 😊';
+        return;
       }
+      
+      const saludos = [
+        `¡Hola ${name}!  ¡Bienvenido a la aplicacion!`,
+        `¡Buenas ${name}!  ¡Que tengas un buen dia!`,
+        `¡Hola ${name}!  ¡Gracias por usar nuestra app!`
+      ];
+      
+      const saludoAleatorio = saludos[Math.floor(Math.random() * saludos.length)];
+      saludoP.textContent = saludoAleatorio;
+    }
     </script>
 
     <div>

@@ -25,9 +25,9 @@ services:
     networks:
       - students_network
     environment:
-      POSTGRES_USER: ${PGUSER}
-      POSTGRES_PASSWORD: ${PGPASSWORD}
-      POSTGRES_DB: ${PGDATABASE}
+      POSTGRES_USER: postgres 
+      POSTGRES_PASSWORD: admin 
+      POSTGRES_DB: students 
     volumes:
       - ./postgres/init.sql:/docker-entrypoint-initdb.d/init.sql
 
